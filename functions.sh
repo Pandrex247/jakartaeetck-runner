@@ -63,16 +63,16 @@ init_urls () {
         PAYARA_URL=$BASE_URL/payara-prerelease.zip
     fi
     if [ -z "$CDI_TCK_URL" ]; then
-        CDI_TCK_URL=$BASE_URL/cdi-tck-4.0.5-dist.zip
+        CDI_TCK_URL=$BASE_URL/cdi-tck-4.0.13-dist.zip
     fi
     if [ -z "$DI_TCK_URL" ]; then
-        DI_TCK_URL=$BASE_URL/jakarta.inject-tck-2.0.1-bin.zip
+        DI_TCK_URL=$BASE_URL/jakarta.inject-tck-2.0.2-bin.zip
     fi
     if [ -z "$BV_TCK_URL" ]; then
         BV_TCK_URL=$BASE_URL/bv-tck-3.0.1-dist.zip
     fi
     if [ -z "$JAXB_TCK_URL" ]; then
-        JAXB_TCK_VERSION=4.0.1
+        JAXB_TCK_VERSION=4.0.2
         JAXB_TCK_NAME=jakarta-xml-binding-tck-$JAXB_TCK_VERSION.zip
     fi
     if [ -z "$DERBY_URL" ]; then

@@ -29,7 +29,7 @@ if [ -z "$TCK_BUNDLE_BASE_URL" ]; then
   export TCK_BUNDLE_BASE_URL=http://localhost:8000
 fi
 if [ -z "$TCK_BUNDLE_FILE_NAME" ]; then
-  export TCK_BUNDLE_FILE_NAME=jakarta-activation-tck-2.1.0.zip
+  export TCK_BUNDLE_FILE_NAME=jakarta-activation-tck-2.1.2.zip
 fi
 
 bash -x $WORKSPACE/docker/build_activationtck.sh

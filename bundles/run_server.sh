@@ -13,7 +13,7 @@ cd `dirname $0`
 # check_present payara-prerelease.zip
 # check_present cdi-tck-3.0.3-dist.zip
 # check_present bv-tck-3.0.0-dist.zip
-# check_present jakarta.inject-tck-2.0.1-bin.zip
+# check_present jakarta.inject-tck-2.0.2-bin.zip
 # check_present javadb.zip
 # check_present ejbtimer_derby.sql
 # check_present jsr352-derby.sql
