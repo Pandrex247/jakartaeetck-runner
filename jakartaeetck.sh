@@ -471,6 +471,8 @@ VI_APPCLIENT_POLICY_FILE=${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/lib/appcli
 echo 'grant {' >> ${VI_APPCLIENT_POLICY_FILE}
 echo 'permission org.apache.derby.security.SystemPermission "engine", "usederbyinternals";' >> ${VI_APPCLIENT_POLICY_FILE}
 echo 'permission "java.lang.RuntimePermission" "getenv.*";' >> ${VI_APPCLIENT_POLICY_FILE}
+echo 'permission java.util.PropertyPermission "java.class.path", "write";' >> ${VI_APPCLIENT_POLICY_FILE}
+echo 'permission java.lang.RuntimePermission "createClassLoader";' >> ${VI_APPCLIENT_POLICY_FILE}
 echo '};' >> ${VI_APPCLIENT_POLICY_FILE}
 
 mkdir -p ${JT_REPORT_DIR}
