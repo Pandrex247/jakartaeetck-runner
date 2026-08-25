@@ -454,23 +454,22 @@ fi
 
 VI_SERVER_POLICY_FILE=${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/domains/domain1/config/server.policy
 echo 'grant {' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission java.io.FilePermission "${com.sun.aas.instanceRoot}${/}generated${/}policy${/}-", "read,write,execute,delete";' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission java.net.NetPermission "specifyStreamHandler";' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission java.lang.RuntimePermission "getenv.SOURCE_DATE_EPOCH";' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission org.apache.derby.security.SystemPermission "engine", "usederbyinternals";' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission java.net.SocketPermission "*", "listen";' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission java.net.SocketPermission "*", "accept";' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission java.io.FilePermission       "<<ALL FILES>>", "write,read";' >> ${VI_SERVER_POLICY_FILE}
-echo 'permission org.apache.derby.security.SystemPermission "engine", "usederbyinternals";' >> ${VI_SERVER_POLICY_FILE}
+echo '    permission java.io.FilePermission "${com.sun.aas.instanceRoot}${/}generated${/}policy${/}-", "read,write,execute,delete";' >> ${VI_SERVER_POLICY_FILE}
+echo '    permission java.net.NetPermission "specifyStreamHandler";' >> ${VI_SERVER_POLICY_FILE}
+echo '    permission java.lang.RuntimePermission "getenv.SOURCE_DATE_EPOCH";' >> ${VI_SERVER_POLICY_FILE}
+echo '    permission org.apache.derby.shared.common.security.SystemPermission "engine", "usederbyinternals";' >> ${VI_SERVER_POLICY_FILE}
+echo '    permission java.net.SocketPermission "*", "listen";' >> ${VI_SERVER_POLICY_FILE}
+echo '    permission java.net.SocketPermission "*", "accept";' >> ${VI_SERVER_POLICY_FILE}
+echo '    permission java.io.FilePermission       "<<ALL FILES>>", "write,read";' >> ${VI_SERVER_POLICY_FILE}
 if [[ "$JDK" == "JDK17" || "$JDK" == "jdk17" ]]; then
-  echo 'permission jakarta.xml.ws.WebServicePermission "CTSPermission3_name";' >> ${VI_SERVER_POLICY_FILE}
+  echo '    permission jakarta.xml.ws.WebServicePermission "CTSPermission3_name";' >> ${VI_SERVER_POLICY_FILE}
 fi
 echo '};' >> ${VI_SERVER_POLICY_FILE}
 
 VI_APPCLIENT_POLICY_FILE=${CTS_HOME}/vi/$GF_VI_TOPLEVEL_DIR/glassfish/lib/appclient/client.policy
 echo 'grant {' >> ${VI_APPCLIENT_POLICY_FILE}
-echo 'permission org.apache.derby.security.SystemPermission "engine", "usederbyinternals";' >> ${VI_APPCLIENT_POLICY_FILE}
-echo 'permission "java.lang.RuntimePermission" "getenv.*";' >> ${VI_APPCLIENT_POLICY_FILE}
+echo '    permission org.apache.derby.shared.common.security.SystemPermission "engine", "usederbyinternals";' >> ${VI_APPCLIENT_POLICY_FILE}
+echo '    permission "java.lang.RuntimePermission" "getenv.*";' >> ${VI_APPCLIENT_POLICY_FILE}
 echo '};' >> ${VI_APPCLIENT_POLICY_FILE}
 
 mkdir -p ${JT_REPORT_DIR}
@@ -488,7 +487,7 @@ echo $JAVA_VERSION > ${JT_REPORT_DIR}/.jdk_version
 #cat ${JAVA_HOME}/conf/security/java.policy
 
 cd  ${TS_HOME}/bin
-export ANT_OPTS="${ANT_OPTS} -Djava.security.manager -Djava.security.policy==${VI_APPCLIENT_POLICY_FILE}"
+export ANT_OPTS="${ANT_OPTS} -Djava.security.policy==${VI_APPCLIENT_POLICY_FILE}"
 # special syntax with "==" replaces system policy file
 ant ${ANT_ARG} config.vi.javadb
 ##### configVI.sh ends here #####
