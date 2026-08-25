@@ -488,8 +488,6 @@ echo $JAVA_VERSION > ${JT_REPORT_DIR}/.jdk_version
 #cat ${JAVA_HOME}/conf/security/java.policy
 
 cd  ${TS_HOME}/bin
-export ANT_OPTS="${ANT_OPTS} -Djava.security.manager -Djava.security.policy==${VI_APPCLIENT_POLICY_FILE}"
-# special syntax with "==" replaces system policy file
 ant ${ANT_ARG} config.vi.javadb
 ##### configVI.sh ends here #####
 
